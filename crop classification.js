@@ -207,7 +207,6 @@ var class_img = ee.ImageCollection(ls).mosaic();
 Export.image.toAsset({
   image: class_img,
   description: class_img+year+region_name,
-  assetId: 'users/xuanhy12345678/classification/images,
   scale: 30,
   region: region,  
   maxPixels : 1e13
@@ -216,6 +215,5 @@ Export.image.toAsset({
 Export.table.toAsset({
   collection: testinf_samples_region,
   description: 'testinf_samples_region'+year+region_name,
-  assetId: 'users/xuanhy12345678/tesing_samples,
   maxVertices:1e13
 });
