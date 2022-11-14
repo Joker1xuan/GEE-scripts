@@ -163,6 +163,7 @@ var finalImage = finalimage.updateMask(cropland);
 
 var regionGrid = grid15.filterBounds(region);            
 var gridList = regionGrid.toList(regionGrid.size());
+print('regionGrid_size',regionGrid.size())
 
 //80% samples for training and 20% samples for testing
 var sampleData = samples.filterBounds(region).randomColumn('random');
@@ -170,8 +171,10 @@ var training_samples_region = sampleData.filter(ee.Filter.lte("random", 0.8));
 var testinf_samples_region = sampleData.filter(ee.Filter.gt("random", 0.8));
 
 //Tile-based classification
+//a is same to regionGrid_size, and in this region, a is 21 
+var a = 21
 var ls = [];
-for(var i=0;i<gridList.size().getInfo();i++){
+for(var i=0;i<a;i++){
   //Compute neighboring Grids 
   var coordinates = ee.Feature(gridList.get(i)).geometry().centroid().coordinates();
   var x = ee.Number(coordinates.get(0));
@@ -213,7 +216,9 @@ Export.image.toAsset({
 });
 
 Export.table.toAsset({
-  collection: testinf_samples_region,
-  description: 'testinf_samples_region'+year+region_name,
+  collection: training_samples_region,
+  description: 'training_samples_region'+year+region_name,
   maxVertices:1e13
 });
+
+//If there is an error in these codes, you can comment lines 173-216, and after the table is exported successfully, use the table to classify the study area
