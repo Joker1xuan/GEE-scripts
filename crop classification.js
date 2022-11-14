@@ -1,4 +1,4 @@
-//Take Songnen Plain (SNP) in 2021 as an example
+//Take Songnen Plain (CBS) in 2021 as an example
 
 //Load the samples file, grid file and shp file for the study area
 var agr_region = ee.FeatureCollection('users/xuanhy12345678/shp_file/agriculture_region');
