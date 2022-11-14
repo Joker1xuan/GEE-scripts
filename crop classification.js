@@ -2,9 +2,9 @@
 
 //Load the samples file, grid file and shp file for the study area
 var agr_region = ee.FeatureCollection('users/xuanhy12345678/shp_file/agriculture_region');
-var samples = ee.FeatureCollection('users/xuanhy12345678/samples/2021samples');
+var samples = ee.FeatureCollection('users/xuanhy12345678/samples/2021CBS_samples');
 var grid15 = ee.FeatureCollection('users/103b6011/class/grid15');
-var region_name = '松嫩平原区';
+var region_name = '长白山脉区';
 var region = agr_region.filter(ee.Filter.eq('NAME',region_name));
 
 //Load the cropland mask 
@@ -140,8 +140,7 @@ var img_allbands = ee.Image(WScollection.iterate(mergeBands, ee.Image([])));
 var newstart = ee.Date.fromYMD(year,4,1).getRelative('day', 'year');
 var l8img_col_new = l8img_col.filter(ee.Filter.dayOfYear(newstart, newstart.add(60*3)));
 var percentile = l8img_col_new.reduce(ee.Reducer.percentile([10,25,50,75,90]));
-var range = l8img_col_new.reduce(ee.Reducer.percentile([75]));
-.subtract(l8img_col_new.reduce(ee.Reducer.percentile([25])));
+var range = l8img_col_new.reduce(ee.Reducer.percentile([75])).subtract(l8img_col_new.reduce(ee.Reducer.percentile([25])));
 var features_combine = percentile.addBands(range);
 
 //Compute the glcms features
