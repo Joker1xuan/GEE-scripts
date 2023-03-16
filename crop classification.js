@@ -1,3 +1,10 @@
+If you want to use this code, please cite our paper.
+
+Xuan, F., Dong, Y., Li, J., Li, X., Su, W., Huang, X., ... & Zhang, Y. (2023). 
+Mapping crop type in Northeast China during 2013–2021 using automatic sampling and tile-based image classification. 
+International Journal of Applied Earth Observation and Geoinformation, 117, 103178. https://doi.org/10.1016/j.jag.2022.103178
+
+
 //Take Baekdu Mountain Zone (BM) in 2021 as an example
 
 //Load the samples file, grid file and shp file for the study area
