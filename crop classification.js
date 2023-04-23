@@ -49,7 +49,7 @@ function addIndices(image){
     'B4': image.select("B4"),
     'B2': image.select('B2')
   }).rename(['evi']);
-  var lswi = image.normalizedDifference(['B3','B6']).rename(['lswi']);
+  var lswi = image.normalizedDifference(['B5','B6']).rename(['lswi']);
   var ndsvi = image.normalizedDifference(['B6','B4']).rename(['ndsvi']);
   var ndti = image.normalizedDifference(['B7','B6']).rename(['ndti']);
   var gcvi = image.expression("((B5 / B3) - 1)",
